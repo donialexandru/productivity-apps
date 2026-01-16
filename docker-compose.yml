@@ -1,6 +1,6 @@
 services:
   react-app:
-    container_name: productity
+    container_name: productivity
     build: ./client/
     ports:
       - "8082:80"
