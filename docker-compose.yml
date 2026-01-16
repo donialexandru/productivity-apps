@@ -1,6 +1,10 @@
 services:
   react-app:
+    container_name: productity
     build: ./client/
     ports:
-      - "8080:80"
+      - "8082:80"
     restart: unless-stopped
+    labels:
+      tsdproxy.enable: true
+      tsdproxy.ephemeral: false
