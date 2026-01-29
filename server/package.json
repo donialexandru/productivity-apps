@@ -5,6 +5,11 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "node src/db/seed.ts",
     "dev": "node --watch src/index.ts",
     "start": "node src/index.ts",
     "test": "vitest run",
