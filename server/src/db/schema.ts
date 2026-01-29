@@ -38,8 +38,14 @@ export const userRelations = relations(users, ({ many }) => ({
   counters: many(counters),
 }))
 
+export const counterRelations = relations(counters, ({ one }) => ({
+  users: one(users, {
+    fields: [counters.userId],
+    references: [users.id],
+  }),
+}))
+
 export type User = typeof users.$inferInsert
-export type Counter = typeof users.$inferInsert
 export type Counter = typeof counters.$inferInsert
 
 export const insertUserSchema = createInsertSchema(users)
