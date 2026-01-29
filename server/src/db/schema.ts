@@ -40,6 +40,7 @@ export const userRelations = relations(users, ({ many }) => ({
 
 export type User = typeof users.$inferInsert
 export type Counter = typeof users.$inferInsert
+export type Counter = typeof counters.$inferInsert
 
 export const insertUserSchema = createInsertSchema(users)
 export const selectUserSchema = createSelectSchema(users)
