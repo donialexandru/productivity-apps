@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
-import Header from "./Header";
+import Header from "./components/Header.jsx";
+import "./index.css";
 
 const App = () => {
   return <Header name="Productivity apps" />;
