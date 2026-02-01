@@ -1,6 +1,8 @@
 :root {
-  --bg-main: #f1f1f1;
-  --bg-second: #fdfdfd;
+  --bg-color-primary: #f1f1f1;
+  --bg-color-secondary: #fdfdfd;
+  --btn-color-primary: gray;
+  --btn-color-danger: red;
 }
 
 * {
@@ -11,7 +13,7 @@
 }
 
 body {
-  background-color: var(--bg-main);
+  background-color: var(--bg-color-primary);
 }
 
 #root {
