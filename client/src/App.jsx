@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Header name="Productivity apps" />
-      <Counter />
+      <Counter name="This is my first counter" />
     </>
   );
 };
