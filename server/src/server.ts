@@ -1,6 +1,6 @@
 import express from 'express'
 import authRoutes from './routes/authRoutes.ts'
-import counterRoutes from './routes/counterRoutes.ts'
+import countersRoutes from './routes/countersRoutes.ts'
 import cors from 'cors'
 import morgan from 'morgan'
 import helmet from 'helmet'
@@ -28,7 +28,7 @@ app.get('/health', (req, res) => {
 })
 
 app.use('/api/auth', authRoutes)
-app.use('/api/counter', counterRoutes)
+app.use('/api/counters', countersRoutes)
 
 export { app }
 
