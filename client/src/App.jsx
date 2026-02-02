@@ -1,13 +1,14 @@
 import { createRoot } from "react-dom/client";
 import Header from "./components/Header.jsx";
 import "./index.css";
-import Counter from "./features/counter/Counter.jsx";
+import Counter from "./features/counters/Counter.jsx";
+import Counters from "./features/counters/Counters.jsx";
 
 const App = () => {
   return (
     <>
       <Header name="Productivity apps" />
-      <Counter name="This is my first counter" />
+      <Counters />
     </>
   );
 };
