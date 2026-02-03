@@ -52,16 +52,21 @@ export default function Counters() {
       <h2>My Counters</h2>
       <CreateCounter onCreate={handleCreate} />
       <div className={styles.grid}>
-        {counters.map((counter) => (
-          <Counter
-            key={counter.id}
-            id={counter.id}
-            name={counter.name}
-            currentValue={counter.value}
-            onUpdate={handleUpdate}
-            onDelete={handleDelete}
-          />
-        ))}
+        {counters.map(
+          (counter) => (
+            console.log(counter.currentCount),
+            (
+              <Counter
+                key={counter.id}
+                id={counter.id}
+                name={counter.name}
+                currentCount={counter.currentCount}
+                onUpdate={handleUpdate}
+                onDelete={handleDelete}
+              />
+            )
+          ),
+        )}
       </div>
     </div>
   );
