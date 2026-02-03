@@ -28,9 +28,20 @@ const seed = async () => {
         userId: demoUser.id,
         name: 'Tickets',
         description: 'A simple counter for tickets',
+        currentCount: 0,
+        targetCount: 10,
       })
       .returning()
-
+    const [testCounter] = await db
+      .insert(counters)
+      .values({
+        userId: demoUser.id,
+        name: 'Testing',
+        description: 'This is a demo counter',
+        currentCount: 0,
+        targetCount: 5,
+      })
+      .returning()
     console.log('✅ DB seeded successfully')
     console.log('user credentials:')
     console.log(`email: ${demoUser.email}`)
