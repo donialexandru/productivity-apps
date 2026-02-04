@@ -4,6 +4,7 @@ import { z } from 'zod'
 import {
   getUserCounters,
   createUserCounter,
+  deleteUserCounter,
 } from '../controllers/counterController.ts'
 
 const createCounterSchema = z.object({
@@ -20,5 +21,6 @@ const router = Router()
 router.get('/', getUserCounters)
 
 router.post('/', validateBody(createCounterSchema), createUserCounter)
+router.delete('/:id', deleteUserCounter)
 
 export default router
