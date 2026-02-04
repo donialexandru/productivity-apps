@@ -1,15 +1,17 @@
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Header from "./components/Header.jsx";
 import "./index.css";
-import Counter from "./features/counters/Counter.jsx";
 import Counters from "./features/counters/Counters.jsx";
 
 const App = () => {
   return (
-    <>
-      <Header name="Productivity apps" />
-      <Counters />
-    </>
+    <StrictMode>
+      <>
+        <Header name="Productivity apps" />
+        <Counters />
+      </>
+    </StrictMode>
   );
 };
 
