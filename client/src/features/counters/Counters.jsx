@@ -16,15 +16,15 @@ export default function Counters() {
     setCounters(data.counters);
   };
 
-  const handleCreate = async (name) => {
+  const handleCreate = async ({ name, targetCount }) => {
     const res = await fetch("/api/counters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, value: 0 }),
+      body: JSON.stringify({ name, targetCount }),
     });
 
-    const newCounter = await res.json();
-    setCounters([...counters, newCounter]);
+    const data = await res.json();
+    setCounters([...counters, data.newCounter]);
   };
 
   const handleUpdate = async (id, newCounter) => {
@@ -52,21 +52,16 @@ export default function Counters() {
       <h2>My Counters</h2>
       <CreateCounter onCreate={handleCreate} />
       <div className={styles.grid}>
-        {counters.map(
-          (counter) => (
-            console.log(counter.currentCount),
-            (
-              <Counter
-                key={counter.id}
-                id={counter.id}
-                name={counter.name}
-                currentCount={counter.currentCount}
-                onUpdate={handleUpdate}
-                onDelete={handleDelete}
-              />
-            )
-          ),
-        )}
+        {counters.map((counter) => (
+          <Counter
+            key={counter.id}
+            id={counter.id}
+            name={counter.name}
+            currentCount={counter.currentCount}
+            onUpdate={handleUpdate}
+            onDelete={handleDelete}
+          />
+        ))}
       </div>
     </div>
   );
