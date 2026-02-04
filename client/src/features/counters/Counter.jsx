@@ -5,9 +5,8 @@ export default function Counter({
   id,
   name,
   currentCount,
-  targetCount,
   onUpdate,
-  odDelete,
+  onDelete,
 }) {
   const [value, setValue] = useState(currentCount);
 

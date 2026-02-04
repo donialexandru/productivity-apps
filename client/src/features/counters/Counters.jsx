@@ -9,7 +9,7 @@ export default function Counters() {
   return (
     <div className={styles.grid}>
       <h2>My Counters</h2>
-      <CreateCounter onCreate={handleCreate} />
+      <CreateCounter className={styles.createCounter} onCreate={handleCreate} />
       <div className={styles.container}>
         {counters.map((counter) => (
           <Counter
