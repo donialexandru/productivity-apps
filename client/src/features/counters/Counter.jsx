@@ -24,7 +24,7 @@ export default function Counter({
   return (
     <div className={styles.counterCard}>
       <button className={styles.delteBtn} onClick={() => onDelete(id)}>
-        x
+        Delete
       </button>
       <h3 className={styles.title}>{name}</h3>
       <div className={styles.counter}>
