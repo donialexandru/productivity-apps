@@ -1,0 +1,9 @@
+{
+  "name": "productivity-apps",
+  "author": "Alexandru Doni",
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ]
+}

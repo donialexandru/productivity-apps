@@ -4,6 +4,8 @@ services:
     container_name: myapp-db-dev
     profiles: ['dev']
     restart: unless-stopped
+    env_file:
+      - .env.dev
 
     environment:
       POSTGRES_USER: ${POSTGRES_USER}

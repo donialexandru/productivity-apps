@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import type { Counter, HandleCreateProps } from "../shared/utils/types";
 
 export const useCounters = () => {
-  const [counters, setCounters] = useState([]);
+  const [counters, setCounters] = useState<Counter[]>([]);
 
   useEffect(() => {
     fetchCounters();
@@ -14,7 +15,7 @@ export const useCounters = () => {
     fetchCounters();
   }, []);
 
-  const handleCreate = async ({ name, targetCount }) => {
+  const handleCreate = async ({ name, targetCount }: HandleCreateProps) => {
     const res = await fetch("/api/counters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

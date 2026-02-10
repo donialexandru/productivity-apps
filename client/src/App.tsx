@@ -1,8 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Counters from "./features/counters/Counters.jsx";
-import Header from "./features/shared/layout/Header.jsx";
+import Header from "./features/shared/layout/Header.js";
 import "./index.css";
+import { Test } from "shared";
 
 const App = () => {
   return (
@@ -16,5 +17,7 @@ const App = () => {
 };
 
 const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+if (container !== null) {
+  const root = createRoot(container);
+  root.render(<App />);
+}
