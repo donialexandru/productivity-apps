@@ -1,9 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Counters from "./features/counters/Counters.jsx";
-import Header from "./features/shared/layout/Header.js";
-import "./index.css";
-import { Test } from "shared";
+import Counters from "./features/counters/Counters.tsx";
+import Header from "./features/shared/layout/Header.tsx";
+import "./styles/index.css";
 
 const App = () => {
   return (

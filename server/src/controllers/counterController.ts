@@ -5,7 +5,7 @@ import { counters } from '../db/schema.ts'
 
 export const getUserCounters = async (req: Request, res: Response) => {
   try {
-    const userId = '56aa5396-947a-4b38-9a94-3acbcb63dcac'
+    const userId = 'fb6dc4cd-e3cf-464e-bfaf-88337b5ac3b2'
 
     const userCounters = await db.query.counters.findMany({
       where: eq(counters.userId, userId),
@@ -23,7 +23,7 @@ export const getUserCounters = async (req: Request, res: Response) => {
 
 export const createUserCounter = async (req: Request, res: Response) => {
   try {
-    const userId = '56aa5396-947a-4b38-9a94-3acbcb63dcac'
+    const userId = 'fb6dc4cd-e3cf-464e-bfaf-88337b5ac3b2'
 
     const { name, targetCount } = req.body
 
@@ -46,7 +46,7 @@ export const createUserCounter = async (req: Request, res: Response) => {
 
 export const deleteUserCounter = async (req: Request, res: Response) => {
   try {
-    const userId = '56aa5396-947a-4b38-9a94-3acbcb63dcac'
+    const userId = 'fb6dc4cd-e3cf-464e-bfaf-88337b5ac3b2'
 
     const { id } = req.params
 

@@ -1,16 +1,15 @@
 import { useCounters } from "./useCounters";
 import Counter from "./Counter";
 import CreateCounter from "./CreateCounter";
-import styles from "./Counters.module.css";
 
 export default function Counters() {
   const { counters, handleCreate, handleUpdate, handleDelete } = useCounters();
 
   return (
-    <div className={styles.grid}>
+    <div className="counters-container">
       <h2>My Counters</h2>
-      <CreateCounter className={styles.createCounter} onCreate={handleCreate} />
-      <div className={styles.container}>
+      <CreateCounter className="create-counter" onCreate={handleCreate} />
+      <div className="">
         {counters.map((counter) => (
           <Counter
             key={counter.id}

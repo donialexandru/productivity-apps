@@ -1,3 +1,42 @@
+:root {
+  --bg-color-primary: #f1f1f1;
+  --bg-color-secondary: #fdfdfd;
+  --btn-color-primary: gray;
+  --btn-color-danger: red;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background-color: var(--bg-color-primary);
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.counters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
+.create-counter {
+  display: flex;
+  flex-direction: column;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  gap: 4rem;
+}
 .counterCard {
   background: var(--bg-color-secondary);
   padding: 24px 32px;

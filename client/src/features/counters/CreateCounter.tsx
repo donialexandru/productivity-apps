@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styles from "./CreateCounter.module.css";
 
 export default function CreateCounter({ onCreate }) {
   const [name, setName] = useState("");
@@ -16,13 +15,13 @@ export default function CreateCounter({ onCreate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className="">
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Counter name..."
-        className={styles.input}
+        className=""
       />
 
       <input
@@ -30,9 +29,9 @@ export default function CreateCounter({ onCreate }) {
         value={targetCounter}
         onChange={(e) => setTargetCounter(e.target.value)}
         placeholder="Target counter"
-        className={styles.input}
+        className=""
       />
-      <button type="submit" className={styles.addBtn}>
+      <button type="submit" className="">
         + Add Counter
       </button>
     </form>

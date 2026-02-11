@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styles from "./Counter.module.css";
 
 export default function Counter({
   id,
@@ -22,17 +21,17 @@ export default function Counter({
   };
 
   return (
-    <div className={styles.counterCard}>
-      <button className={styles.delteBtn} onClick={() => onDelete(id)}>
+    <div className="">
+      <button className="" onClick={() => onDelete(id)}>
         Delete
       </button>
-      <h3 className={styles.title}>{name}</h3>
-      <div className={styles.counter}>
-        <button className={styles.btn} onClick={decrement}>
+      <h3 className="">{name}</h3>
+      <div className="">
+        <button className="" onClick={decrement}>
           −
         </button>
-        <span className={styles.value}>{value}</span>
-        <button className={styles.btn} onClick={increment}>
+        <span className="">{value}</span>
+        <button className="" onClick={increment}>
           +
         </button>
       </div>
