@@ -15,25 +15,27 @@ export default function CreateCounter({ onCreate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="">
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Counter name..."
-        className=""
-      />
+    <div className="create-counter">
+      <form onSubmit={handleSubmit} className="create-form">
+        <input
+          className="input"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Counter name..."
+        />
 
-      <input
-        type="number"
-        value={targetCounter}
-        onChange={(e) => setTargetCounter(e.target.value)}
-        placeholder="Target counter"
-        className=""
-      />
-      <button type="submit" className="">
-        + Add Counter
-      </button>
-    </form>
+        <input
+          className="input"
+          type="number"
+          value={targetCounter}
+          onChange={(e) => setTargetCounter(e.target.value)}
+          placeholder="Target counter"
+        />
+        <button type="submit" className="btn">
+          + Add Counter
+        </button>
+      </form>
+    </div>
   );
 }

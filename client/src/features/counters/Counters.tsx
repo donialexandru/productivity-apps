@@ -8,8 +8,8 @@ export default function Counters() {
   return (
     <div className="counters-container">
       <h2>My Counters</h2>
-      <CreateCounter className="create-counter" onCreate={handleCreate} />
-      <div className="">
+      <CreateCounter onCreate={handleCreate} />
+      <div className="counters">
         {counters.map((counter) => (
           <Counter
             key={counter.id}

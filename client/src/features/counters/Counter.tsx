@@ -21,17 +21,17 @@ export default function Counter({
   };
 
   return (
-    <div className="">
-      <button className="" onClick={() => onDelete(id)}>
+    <div className="counter">
+      <button className="btn-danger" onClick={() => onDelete(id)}>
         Delete
       </button>
       <h3 className="">{name}</h3>
-      <div className="">
-        <button className="" onClick={decrement}>
+      <span className="counter-value">{value}</span>
+      <div className="counter-value-controls">
+        <button className="btn-decrease" onClick={decrement}>
           −
         </button>
-        <span className="">{value}</span>
-        <button className="" onClick={increment}>
+        <button className="btn-increase" onClick={increment}>
           +
         </button>
       </div>
