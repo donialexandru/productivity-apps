@@ -29,7 +29,7 @@ export default function CreateCounter({ onCreate }) {
           className="input"
           type="number"
           value={targetCounter}
-          onChange={(e) => setTargetCounter(e.target.value)}
+          onChange={(e) => setTargetCounter(e.target.valueAsNumber)}
           placeholder="Target counter"
         />
         <button type="submit" className="btn">
