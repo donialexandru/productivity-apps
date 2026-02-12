@@ -4,11 +4,9 @@ import {
   varchar,
   text,
   timestamp,
-  boolean,
   integer,
 } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 
 export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -47,6 +45,3 @@ export const counterRelations = relations(counters, ({ one }) => ({
 
 export type User = typeof users.$inferInsert
 export type Counter = typeof counters.$inferInsert
-
-export const insertUserSchema = createInsertSchema(users)
-export const selectUserSchema = createSelectSchema(users)

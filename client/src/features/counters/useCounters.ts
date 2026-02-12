@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import type { Counter, HandleCreateProps } from "../shared/utils/types";
 
+type Id = string;
+type Value = number;
+
 export const useCounters = () => {
   const [counters, setCounters] = useState<Counter[]>([]);
 
@@ -26,19 +29,19 @@ export const useCounters = () => {
     setCounters([...counters, data.newCounter]);
   };
 
-  const handleUpdate = async (id, newCounter) => {
+  const handleUpdate = async (id: Id, newValue: Value) => {
     await fetch(`/api/counters/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
     setCounters(
       counters.map((counter) =>
-        counter.id === id ? { ...counter, value: newCounter } : counter,
+        counter.id === id ? { ...counter, value: newValue } : counter,
       ),
     );
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: Id) => {
     await fetch(`/api/counters/${id}`, {
       method: "DELETE",
     });
