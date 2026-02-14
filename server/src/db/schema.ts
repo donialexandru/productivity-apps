@@ -28,7 +28,7 @@ export const counters = pgTable('counters', {
   description: text('description'),
   currentCount: integer('current_count').default(0),
   targetCount: integer('target_count').default(1),
-  cratedAt: timestamp('created_at').defaultNow().notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 

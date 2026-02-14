@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { CounterSchemaArray, type Counter } from "shared";
+import {
+  CounterSchema,
+  CounterSchemaArray,
+  type Counter,
+  type CreateCounterInput,
+} from "shared";
 
 type Id = string;
 type Value = number;
@@ -11,7 +16,6 @@ export const useCounters = () => {
     async function fetchCounters() {
       const response = await fetch("/api/counters");
       const data = await response.json();
-      console.log(data.counters);
       const counters = CounterSchemaArray.parse(data.counters);
       setCounters(counters);
     }
@@ -19,7 +23,7 @@ export const useCounters = () => {
     fetchCounters();
   }, []);
 
-  const handleCreate = async ({ name, targetCount }) => {
+  const handleCreate = async ({ name, targetCount }: CreateCounterInput) => {
     const res = await fetch("/api/counters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,7 +31,8 @@ export const useCounters = () => {
     });
 
     const data = await res.json();
-    setCounters([...counters, data.newCounter]);
+    const newCounter = CounterSchema.parse(data.newCounter);
+    setCounters([...counters, newCounter]);
   };
 
   const handleUpdate = async (id: Id, newValue: Value) => {

@@ -2,14 +2,16 @@ import type { Request, Response } from 'express'
 import { db } from '../db/connection.ts'
 import { and, asc, desc, eq } from 'drizzle-orm'
 import { counters } from '../db/schema.ts'
+import type { TypedRequest } from '../utils/types.ts'
+import type { CreateCounterInput } from 'shared'
 
 export const getUserCounters = async (req: Request, res: Response) => {
   try {
-    const userId = 'fb6dc4cd-e3cf-464e-bfaf-88337b5ac3b2'
+    const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
 
     const userCounters = await db.query.counters.findMany({
       where: eq(counters.userId, userId),
-      orderBy: [asc(counters.cratedAt)],
+      orderBy: [asc(counters.createdAt)],
     })
 
     res.json({
@@ -21,9 +23,12 @@ export const getUserCounters = async (req: Request, res: Response) => {
   }
 }
 
-export const createUserCounter = async (req: Request, res: Response) => {
+export const createUserCounter = async (
+  req: TypedRequest<CreateCounterInput>,
+  res: Response,
+) => {
   try {
-    const userId = 'fb6dc4cd-e3cf-464e-bfaf-88337b5ac3b2'
+    const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
 
     const { name, targetCount } = req.body
 
@@ -46,7 +51,7 @@ export const createUserCounter = async (req: Request, res: Response) => {
 
 export const deleteUserCounter = async (req: Request, res: Response) => {
   try {
-    const userId = 'fb6dc4cd-e3cf-464e-bfaf-88337b5ac3b2'
+    const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
 
     const { id } = req.params
 
