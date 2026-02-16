@@ -1,9 +1,15 @@
-import { useCounters } from "./useCounters";
-import Counter from "./Counter";
-import CreateCounter from "./CreateCounter";
+import { useCounters } from "../features/counters/useCounters";
+import Counter from "../features/counters/Counter";
+import CreateCounter from "../features/counters/CreateCounter";
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export default function Counters() {
-  const { counters, handleCreate, handleUpdate, handleDelete } = useCounters();
+export const Route = createLazyFileRoute("/counters")({
+  component: Counters,
+});
+
+function Counters() {
+  const { counters, countersNew, handleCreate, handleUpdate, handleDelete } =
+    useCounters();
 
   return (
     <div className="counters-container">

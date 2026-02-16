@@ -1,3 +1,3 @@
 import { type Request } from 'express'
 
-export type TypedRequest<T> = Request<{}, {}, T>
+export type TypedRequestBody<T> = Request<{}, {}, T>

@@ -1,41 +1,46 @@
-import { useState } from "react";
+import { useState, type ComponentPropsWithoutRef } from "react";
+import { type CreateCounterInput, type Counter } from "shared";
 
-export default function CreateCounter({ onCreate }) {
-  const [name, setName] = useState("");
-  const [targetCounter, setTargetCounter] = useState(0);
+type CounterName = Counter["name"];
 
-  const handleSubmit = (e) => {
+interface CreateCounterProps extends ComponentPropsWithoutRef<"form"> {
+  onCreate: ({ name, targetCount }: CreateCounterInput) => void;
+}
+
+export default function CreateCounter({ onCreate }: CreateCounterProps) {
+  const [name, setName] = useState<CounterName>("");
+  const [targetCount, setTargetCounter] = useState(0);
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const trimmedName = name.trim();
     if (trimmedName) {
-      onCreate({ name: trimmedName, targetCounter: targetCounter });
+      onCreate({ name: trimmedName, targetCount: targetCount });
       setName("");
       setTargetCounter(0);
     }
   };
 
   return (
-    <div className="create-counter">
-      <form onSubmit={handleSubmit} className="create-form">
-        <input
-          className="input"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Counter name..."
-        />
+    <form onSubmit={handleSubmit} className="create-form">
+      <input
+        className="input"
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Counter name..."
+      />
 
-        <input
-          className="input"
-          type="number"
-          value={targetCounter}
-          onChange={(e) => setTargetCounter(e.target.valueAsNumber)}
-          placeholder="Target counter"
-        />
-        <button type="submit" className="btn">
-          + Add Counter
-        </button>
-      </form>
-    </div>
+      <input
+        className="input"
+        type="number"
+        value={targetCount}
+        onChange={(e) => setTargetCounter(e.target.valueAsNumber)}
+        placeholder="Target counter"
+      />
+      <button type="submit" className="btn">
+        + Add Counter
+      </button>
+    </form>
   );
 }

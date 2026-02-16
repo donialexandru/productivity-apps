@@ -2,10 +2,10 @@ import type { Request, Response } from 'express'
 import { db } from '../db/connection.ts'
 import { and, asc, desc, eq } from 'drizzle-orm'
 import { counters } from '../db/schema.ts'
-import type { TypedRequest } from '../utils/types.ts'
+import type { TypedRequestBody } from '../utils/types.ts'
 import type { CreateCounterInput } from 'shared'
 
-export const getUserCounters = async (req: Request, res: Response) => {
+export const getUserCounters = async (req, res: Response) => {
   try {
     const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
 
@@ -24,7 +24,7 @@ export const getUserCounters = async (req: Request, res: Response) => {
 }
 
 export const createUserCounter = async (
-  req: TypedRequest<CreateCounterInput>,
+  req: TypedRequestBody<CreateCounterInput>,
   res: Response,
 ) => {
   try {
