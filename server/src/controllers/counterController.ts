@@ -5,7 +5,7 @@ import { counters } from '../db/schema.ts'
 import type { TypedRequestBody } from '../utils/types.ts'
 import type { CreateCounterInput } from 'shared'
 
-export const getUserCounters = async (req, res: Response) => {
+export const getUserCounters = async (req: Request, res: Response) => {
   try {
     const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
 

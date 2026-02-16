@@ -13,11 +13,6 @@ type CounterValue = Counter["currentCount"];
 
 export const useCounters = () => {
   const [counters, setCounters] = useState<Counter[]>([]);
-  const [isLoading, countersNew] = useQuery({
-    queryKey: ["get-counters"],
-    queryFn: () => getCounters(),
-    staleTime: 30000,
-  });
 
   useEffect(() => {
     async function fetchCounters() {
@@ -78,5 +73,10 @@ export const useCounters = () => {
     }
     setCounters(counters.filter((counter) => counter.id !== id));
   };
-  return { counters, countersNew, handleCreate, handleUpdate, handleDelete };
+  return {
+    counters,
+    handleCreate,
+    handleUpdate,
+    handleDelete,
+  };
 };

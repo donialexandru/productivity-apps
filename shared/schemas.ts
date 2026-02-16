@@ -15,6 +15,10 @@ export const CounterSchema = z.object({
   updatedAt: z.coerce.date(),
 });
 
+export const CounterSchemaBody = z.object({
+  counters: z.array(CounterSchema),
+});
+
 export const CreateCounterSchema = CounterSchema.pick({
   name: true,
   targetCount: true,

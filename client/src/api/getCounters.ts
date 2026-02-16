@@ -1,14 +1,10 @@
-import { CounterSchemaArray } from "shared";
+import { CounterSchemaBody } from "shared";
 
 export default async function getCounters() {
   const response = await fetch("/api/counters");
+  const data = CounterSchemaBody.parse(await response.json());
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch counters");
-  }
-
-  const data = await response.json();
-  const counters = CounterSchemaArray.parse(data.counters);
+  const counters = data.counters;
 
   return counters;
 }
