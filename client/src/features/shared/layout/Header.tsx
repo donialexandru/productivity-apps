@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useContext } from "react";
+import { useUserContext } from "../../../contexts/UserContext";
 
 export default function Header() {
+  const { name } = useUserContext();
   return (
     <nav>
       <Link to="/">
