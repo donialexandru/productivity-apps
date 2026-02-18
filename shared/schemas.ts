@@ -6,6 +6,8 @@ export const CreateUserSchema = z.object({
   password: z.string().min(8),
 });
 
+export const SignInUserSchema = CreateUserSchema.omit({ username: true });
+
 export const CounterSchema = z.object({
   id: z.string(),
   name: z.string(),

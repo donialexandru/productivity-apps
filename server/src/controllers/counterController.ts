@@ -7,7 +7,7 @@ import type { CreateCounterInput } from 'shared'
 
 export const getUserCounters = async (req: Request, res: Response) => {
   try {
-    const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
+    const userId = req.user.id
 
     const userCounters = await db.query.counters.findMany({
       where: eq(counters.userId, userId),
@@ -28,7 +28,7 @@ export const createUserCounter = async (
   res: Response,
 ) => {
   try {
-    const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
+    const userId = req.user.id
 
     const { name, targetCount } = req.body
 
