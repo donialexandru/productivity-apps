@@ -10,7 +10,7 @@ import { authenticateToken } from '../midlleware/auth.ts'
 
 const router = Router()
 
-// Protect routes; only authenticated users can access them
+// Protect routes only authenticated users can access them
 router.use(authenticateToken)
 
 // Get all counters

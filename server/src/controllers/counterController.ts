@@ -4,8 +4,12 @@ import { and, asc, desc, eq } from 'drizzle-orm'
 import { counters } from '../db/schema.ts'
 import type { TypedRequestBody } from '../utils/types.ts'
 import type { CreateCounterInput } from 'shared'
+import type { AuthenticatedRequest } from '../midlleware/auth.ts'
 
-export const getUserCounters = async (req: Request, res: Response) => {
+export const getUserCounters = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   try {
     const userId = req.user.id
 
@@ -24,7 +28,7 @@ export const getUserCounters = async (req: Request, res: Response) => {
 }
 
 export const createUserCounter = async (
-  req: TypedRequestBody<CreateCounterInput>,
+  req: AuthenticatedRequest,
   res: Response,
 ) => {
   try {
@@ -49,9 +53,12 @@ export const createUserCounter = async (
   }
 }
 
-export const deleteUserCounter = async (req: Request, res: Response) => {
+export const deleteUserCounter = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   try {
-    const userId = '738c550e-b543-4e9f-baa8-8a6b4a2987db'
+    const userId = req.user.id
 
     const { id } = req.params
 
