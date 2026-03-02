@@ -1,6 +1,6 @@
-import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
-import type { TokenKey } from "../../types/storage";
+import { createFileRoute } from "@tanstack/react-router";
 import { useCurrentUser } from "../../hooks/useAuth";
+import Counters from "../../features/counters/Counters";
 
 export const Route = createFileRoute("/_protected/dashboard")({
   component: DashboardPage,
@@ -12,9 +12,12 @@ function DashboardPage() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div className="dashboard">
-      <h1>Dashboard</h1>
-      <p>Welcome, {user?.name}</p>
-    </div>
+    <>
+      <div className="dashboard">
+        <h1>Dashboard</h1>
+        <p>Welcome, {user?.username}</p>
+      </div>
+      <Counters />
+    </>
   );
 }

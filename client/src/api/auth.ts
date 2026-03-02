@@ -20,17 +20,17 @@ export const loginUser = async (
   credentials: LoginCredentials,
 ): Promise<AuthResponse> => {
   const { data } = await apiClient.post<AuthResponse>(
-    "/auth/login",
+    "/api/auth/login",
     credentials,
   );
   return data;
 };
 
 export const getMe = async (): Promise<User> => {
-  const { data } = await apiClient.get<User>("/auth/me");
-  return data;
+  const { data } = await apiClient.get<User>("/api/auth/me");
+  return data.user;
 };
 
 export const logoutUser = async (): Promise<void> => {
-  await apiClient.post("/auth/logout");
+  await apiClient.post("/api/auth/logout");
 };
