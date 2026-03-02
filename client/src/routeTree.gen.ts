@@ -12,24 +12,21 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
 
-const CountersLazyRouteImport = createFileRoute('/counters')()
+const ProtectedCountersLazyRouteImport = createFileRoute(
+  '/_protected/counters',
+)()
 
-const CountersLazyRoute = CountersLazyRouteImport.update({
-  id: '/counters',
-  path: '/counters',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/counters.lazy').then((d) => d.Route))
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,50 +34,61 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProtectedCountersLazyRoute = ProtectedCountersLazyRouteImport.update({
+  id: '/counters',
+  path: '/counters',
+  getParentRoute: () => ProtectedRoute,
+} as any).lazy(() =>
+  import('./routes/_protected/counters.lazy').then((d) => d.Route),
+)
+const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ProtectedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
-  '/counters': typeof CountersLazyRoute
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/counters': typeof ProtectedCountersLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
-  '/counters': typeof CountersLazyRoute
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/counters': typeof ProtectedCountersLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/_protected': typeof ProtectedRouteWithChildren
   '/login': typeof LoginRoute
-  '/counters': typeof CountersLazyRoute
+  '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/_protected/counters': typeof ProtectedCountersLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login' | '/counters'
+  fullPaths: '/' | '/login' | '/dashboard' | '/counters'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login' | '/counters'
-  id: '__root__' | '/' | '/dashboard' | '/login' | '/counters'
+  to: '/' | '/login' | '/dashboard' | '/counters'
+  id:
+    | '__root__'
+    | '/'
+    | '/_protected'
+    | '/login'
+    | '/_protected/dashboard'
+    | '/_protected/counters'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRoute
+  ProtectedRoute: typeof ProtectedRouteWithChildren
   LoginRoute: typeof LoginRoute
-  CountersLazyRoute: typeof CountersLazyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/counters': {
-      id: '/counters'
-      path: '/counters'
-      fullPath: '/counters'
-      preLoaderRoute: typeof CountersLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -88,11 +96,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -102,14 +110,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected/counters': {
+      id: '/_protected/counters'
+      path: '/counters'
+      fullPath: '/counters'
+      preLoaderRoute: typeof ProtectedCountersLazyRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/dashboard': {
+      id: '/_protected/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof ProtectedDashboardRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
   }
 }
 
+interface ProtectedRouteChildren {
+  ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedCountersLazyRoute: typeof ProtectedCountersLazyRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedCountersLazyRoute: ProtectedCountersLazyRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRoute,
+  ProtectedRoute: ProtectedRouteWithChildren,
   LoginRoute: LoginRoute,
-  CountersLazyRoute: CountersLazyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

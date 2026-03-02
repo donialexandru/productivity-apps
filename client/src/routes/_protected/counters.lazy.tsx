@@ -1,11 +1,11 @@
-import { useCounters } from "../features/counters/useCounters";
-import Counter from "../features/counters/Counter";
-import CreateCounter from "../features/counters/CreateCounter";
+import { useCounters } from "../../features/counters/useCounters";
+import Counter from "../../features/counters/Counter";
+import CreateCounter from "../../features/counters/CreateCounter";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import getCounters from "../api/getCounters";
+import getCounters from "../../api/getCounters";
 
-export const Route = createLazyFileRoute("/counters")({
+export const Route = createLazyFileRoute("/_protected/counters")({
   component: Counters,
 });
 

@@ -5,6 +5,7 @@ import { generateToken } from '../utils/jwt.ts'
 import { comparePasswords, hashPassword } from '../utils/passwords.ts'
 import { eq } from 'drizzle-orm'
 import { CreateUserSchema } from 'shared'
+import { email } from 'zod'
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -89,5 +90,32 @@ export const login = async (req: Request, res: Response) => {
   } catch (e) {
     console.error('Login error', e)
     res.status(500).json({ error: 'Failed to login' })
+  }
+}
+
+export const getMe = async (req: Request, res: Response) => {
+  try {
+    const user = await db.query.users.findFirst({
+      where: eq(users.id, req.user!.id),
+    })
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' })
+    }
+
+    return res.status(200).json({
+      message: 'User fetched successfully',
+      user: {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        createdAt: user.createdAt,
+      },
+    })
+  } catch (e) {
+    console.error('Get me error', e)
+    return res.status(500).json({ error: 'Failed to fetch user' })
   }
 }
