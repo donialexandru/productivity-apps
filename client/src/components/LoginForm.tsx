@@ -17,7 +17,7 @@ export function LoginForm() {
     <form onSubmit={handleSubmit}>
       <h2>Sign In</h2>
       <input name="email" type="email" placeholder="Email" required />
-      <input name="password" type="padding" placeholder="Password" required />
+      <input name="password" type="password" placeholder="Password" required />
       {login.isError && (
         <p>{login.error?.message ?? "Login failed. Try again."}</p>
       )}

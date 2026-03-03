@@ -17,7 +17,6 @@ function DashboardPage() {
         <h1>Dashboard</h1>
         <p>Welcome, {user?.username}</p>
       </div>
-      <Counters />
     </>
   );
 }

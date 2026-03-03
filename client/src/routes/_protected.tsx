@@ -14,6 +14,7 @@ export const Route = createFileRoute("/_protected")({
   component: () => (
     <>
       <Header />
+      <LogoutButton />
       <Outlet />
     </>
   ),
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/_protected")({
 function LogoutButton() {
   const logout = useLogout();
   return (
-    <button onclick={() => logout.mutate()}>
+    <button onClick={() => logout.mutate()}>
       {logout.isPending ? "Logging out..." : "Logout"}
     </button>
   );

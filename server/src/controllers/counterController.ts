@@ -32,6 +32,7 @@ export const createUserCounter = async (
   res: Response,
 ) => {
   try {
+    console.log(req.body)
     const userId = req.user.id
 
     const { name, targetCount } = req.body

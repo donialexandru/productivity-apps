@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import getCounters from "../../api/getCounters";
-import { useQuery } from "@tanstack/react-query";
 import {
   CounterSchema,
   CounterSchemaArray,
   type Counter,
   type CreateCounterInput,
 } from "shared";
+import { apiClient } from "../../api/client";
 
 type CounterId = Counter["id"];
 type CounterValue = Counter["currentCount"];
@@ -16,13 +15,8 @@ export const useCounters = () => {
 
   useEffect(() => {
     async function fetchCounters() {
-      const response = await fetch("/api/counters");
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch counters");
-      }
-
-      const data = await response.json();
+      const response = await apiClient.get("/api/counters");
+      const data = response.data;
       const counters = CounterSchemaArray.parse(data.counters);
       setCounters(counters);
     }
@@ -31,30 +25,18 @@ export const useCounters = () => {
   }, []);
 
   const handleCreate = async ({ name, targetCount }: CreateCounterInput) => {
-    const response = await fetch("/api/counters", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, targetCount }),
+    const response = await apiClient.post("/api/counters", {
+      name,
+      targetCount,
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to create counter");
-    }
-
-    const data = await response.json();
+    const data = await response.data;
     const newCounter = CounterSchema.parse(data.newCounter);
     setCounters([...counters, newCounter]);
   };
 
   const handleUpdate = async (id: CounterId, newValue: CounterValue) => {
-    const response = await fetch(`/api/counters/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to uptdate counter");
-    }
+    const response = await apiClient.post(`/api/counters/${id}`);
 
     setCounters(
       counters.map((counter) =>
@@ -64,13 +46,8 @@ export const useCounters = () => {
   };
 
   const handleDelete = async (id: CounterId) => {
-    const response = await fetch(`/api/counters/${id}`, {
-      method: "DELETE",
-    });
+    const response = await apiClient.delete(`/api/counters/${id}`);
 
-    if (!response.ok) {
-      throw new Error("Failed to delete counter");
-    }
     setCounters(counters.filter((counter) => counter.id !== id));
   };
   return {

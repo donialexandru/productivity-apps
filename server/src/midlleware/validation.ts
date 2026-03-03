@@ -6,6 +6,7 @@ export const validateBody = <T>(
 ): RequestHandler<{}, unknown, T> => {
   return (req, res, next) => {
     try {
+      console.log(req.body)
       const validatedData = schema.parse(req.body)
       req.body = validatedData
       next()
