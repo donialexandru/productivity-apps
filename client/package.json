@@ -38,6 +38,7 @@
     "axios": "^1.13.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-error-boundary": "^6.1.1",
     "shared": "1.0.0"
   }
 }

@@ -3,8 +3,9 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen";
-import "./style.css";
 import { AuthProvider, useAuthContext } from "./contexts/AuthContext";
+import { ErrorBoundary } from "react-error-boundary";
+import "./style.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,9 +32,11 @@ const App = () => {
   return (
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <InnerApp />
-        </AuthProvider>
+        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+          <AuthProvider>
+            <InnerApp />
+          </AuthProvider>
+        </ErrorBoundary>
       </QueryClientProvider>
     </StrictMode>
   );
