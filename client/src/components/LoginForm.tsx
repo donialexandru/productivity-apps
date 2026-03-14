@@ -15,12 +15,18 @@ export function LoginForm() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Sign In</h2>
-      <input name="email" type="email" placeholder="Email" required />
-      <input name="password" type="password" placeholder="Password" required />
-      {login.isError && (
-        <p>{login.error?.message ?? "Login failed. Try again."}</p>
-      )}
+      <div className="field">
+        <input name="email" type="email" placeholder="Email" required />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+        />
+        {login.isError && (
+          <p>{login.error?.message ?? "Login failed. Try again."}</p>
+        )}
+      </div>
       <button type="submit" disabled={login.isPending}>
         {login.isPending ? "Signing in ..." : "Sign In"}
       </button>

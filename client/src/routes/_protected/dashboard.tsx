@@ -15,7 +15,7 @@ function DashboardPage() {
     <>
       <div className="dashboard">
         <h1>Dashboard</h1>
-        <p>Welcome, {user?.username}</p>
+        <p>Welcome, {user?.email}</p>
       </div>
     </>
   );

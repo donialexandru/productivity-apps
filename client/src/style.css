@@ -26,6 +26,122 @@ nav {
   margin: 0 auto;
   padding: 1rem;
 }
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f4f0;
+  font-family: "Georgia", serif;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  background: #ffffff;
+  border: 1px solid #e2e0d8;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a18;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.auth-card p.subtitle {
+  font-size: 0.875rem;
+  color: #777770;
+  margin-bottom: 1.75rem;
+}
+
+/* ── Fields ──────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #555550;
+}
+
+.field input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #d8d6ce;
+  border-radius: 8px;
+  background: #faf9f7;
+  color: #1a1a18;
+  font-size: 0.9rem;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.field input:focus {
+  border-color: #1a1a18;
+  box-shadow: 0 0 0 3px rgba(26, 26, 24, 0.08);
+}
+
+.field input::placeholder {
+  color: #b0aea6;
+}
+
+/* ── Submit button ───────────────────────────────────── */
+.auth-card button[type="submit"] {
+  width: 100%;
+  height: 42px;
+  margin-top: 0.5rem;
+  background: #1a1a18;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+}
+
+.auth-card button[type="submit"]:hover {
+  background: #333330;
+}
+
+.auth-card button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* ── Toggle text ─────────────────────────────────────── */
+.switch-text {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: #777770;
+}
+
+.switch-text a {
+  color: #1a1a18;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.switch-text a:hover {
+  color: #555550;
+}
+
 .input {
   padding: 2rem;
   border-radius: 1rem;

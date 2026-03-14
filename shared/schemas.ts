@@ -2,11 +2,10 @@ import { z } from "zod";
 
 export const CreateUserSchema = z.object({
   email: z.string().email(),
-  username: z.string().max(50),
   password: z.string().min(8),
 });
 
-export const SignInUserSchema = CreateUserSchema.omit({ username: true });
+export const SignInUserSchema = CreateUserSchema;
 
 export const CounterSchema = z.object({
   id: z.string(),

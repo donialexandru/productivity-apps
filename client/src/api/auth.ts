@@ -1,6 +1,6 @@
 import { apiClient } from "./client";
 
-export interface LoginCredentials {
+export interface AuthCredentials {
   email: string;
   password: string;
 }
@@ -17,7 +17,7 @@ export interface AuthResponse {
 }
 
 export const loginUser = async (
-  credentials: LoginCredentials,
+  credentials: AuthCredentials,
 ): Promise<AuthResponse> => {
   const { data } = await apiClient.post<AuthResponse>(
     "/api/auth/login",
@@ -26,6 +26,15 @@ export const loginUser = async (
   return data;
 };
 
+export const registerUser = async (
+  credentials: AuthCredentials,
+): Promise<AuthResponse> => {
+  const { data } = await apiClient.post<AuthResponse>(
+    "/api/auth/register",
+    credentials,
+  );
+  return data;
+};
 export const getMe = async (): Promise<User> => {
   const { data } = await apiClient.get<User>("/api/auth/me");
   return data.user;

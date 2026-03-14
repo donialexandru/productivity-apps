@@ -7,7 +7,7 @@ import { eq } from 'drizzle-orm'
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { email, username, password, firstName, lastName } = req.body
+    const { email, password, firstName, lastName } = req.body
     console.log('data from the body has been successfully retrieved.')
 
     const hashedPassword = await hashPassword(password)
@@ -16,7 +16,6 @@ export const register = async (req: Request, res: Response) => {
       .insert(users)
       .values({
         email,
-        username,
         password: hashedPassword,
         firstName,
         lastName,
@@ -24,7 +23,6 @@ export const register = async (req: Request, res: Response) => {
       .returning({
         id: users.id,
         email: users.email,
-        username: users.username,
         firstName: users.firstName,
         lastName: users.lastName,
         createdAt: users.createdAt,
@@ -33,7 +31,6 @@ export const register = async (req: Request, res: Response) => {
     const token = await generateToken({
       id: user.id,
       email: user.email,
-      username: user.username,
     })
 
     return res.status(201).json({
@@ -68,7 +65,6 @@ export const login = async (req: Request, res: Response) => {
     const token = await generateToken({
       id: user.id,
       email: user.email,
-      username: user.username,
     })
 
     return res
@@ -77,7 +73,6 @@ export const login = async (req: Request, res: Response) => {
         user: {
           id: user.id,
           email: user.email,
-          username: user.username,
           firstName: user.firstName,
           lastName: user.lastName,
           createdAt: user.createdAt,
