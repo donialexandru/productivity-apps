@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRegister } from "../hooks/useAuth";
+import { useRegister } from "../hooks/useAuth.ts";
 
 export function RegisterForm() {
   const register = useRegister();

@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen";
-import { AuthProvider, useAuthContext } from "./contexts/AuthContext";
+import { AuthProvider, useAuthContext } from "./auth/context/AuthContext";
 import { ErrorBoundary } from "react-error-boundary";
 import "./style.css";
 

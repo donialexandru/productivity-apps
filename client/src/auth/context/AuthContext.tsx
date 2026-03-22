@@ -5,7 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { User } from "../api/auth";
+import type { User } from "../api/authApi";
 
 const TOKEN_KEY = "auth_token";
 

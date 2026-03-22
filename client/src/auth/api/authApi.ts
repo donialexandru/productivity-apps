@@ -1,4 +1,4 @@
-import { apiClient } from "./client";
+import { apiClient } from "../../lib/axios.ts";
 
 export interface AuthCredentials {
   email: string;

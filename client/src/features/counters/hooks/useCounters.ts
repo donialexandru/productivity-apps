@@ -5,7 +5,7 @@ import {
   type Counter,
   type CreateCounterInput,
 } from "shared";
-import { apiClient } from "../../api/client";
+import { apiClient } from "../../../lib/axios.ts";
 
 type CounterId = Counter["id"];
 type CounterValue = Counter["currentCount"];

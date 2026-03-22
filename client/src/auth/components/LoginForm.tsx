@@ -1,4 +1,4 @@
-import { useLogin } from "../hooks/useAuth";
+import { useLogin } from "../hooks/useAuth.ts";
 
 export function LoginForm() {
   const login = useLogin();

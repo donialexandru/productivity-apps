@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useUserContext } from "../../../contexts/UserContext";
 
 export default function Header() {
-  const { name } = useUserContext();
   return (
     <nav>
       <Link to="/">
@@ -12,7 +10,8 @@ export default function Header() {
         <h2 className="counters-nav">Counters</h2>
       </Link>
       <div className="nav-user">
-        🔐<span className="nav-user-name">{name}</span>
+        🔐
+        <span className="nav-user-name">{"This will be the user's name"}</span>
       </div>
     </nav>
   );

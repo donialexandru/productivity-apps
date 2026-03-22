@@ -1,5 +1,5 @@
 import { CounterSchemaBody } from "shared";
-import { apiClient } from "./client";
+import { apiClient } from "../../../lib/axios.ts";
 
 export default async function getCounters() {
   const response = await apiClient.get("/api/counters");

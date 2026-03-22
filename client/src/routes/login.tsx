@@ -1,7 +1,7 @@
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
-import { LoginForm } from "../components/LoginForm";
+import { LoginForm } from "../auth/components/LoginForm";
 import { useState } from "react";
-import { RegisterForm } from "../components/RegisterForm";
+import { RegisterForm } from "../auth/components/RegisterForm";
 
 export const Route = createFileRoute("/login")({
   beforeLoad: ({ context }) => {

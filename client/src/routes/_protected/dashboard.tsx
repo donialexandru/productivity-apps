@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCurrentUser } from "../../hooks/useAuth";
-import Counters from "../../features/counters/Counters";
+import { useCurrentUser } from "../../auth/hooks/useAuth";
+import Counters from "../../features/counters/components/Counters";
 
 export const Route = createFileRoute("/_protected/dashboard")({
   component: DashboardPage,

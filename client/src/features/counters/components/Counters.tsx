@@ -1,8 +1,8 @@
-import { useCounters } from "./useCounters";
+import { useCounters } from "../hooks/useCounters";
 import Counter from "./Counter";
 import CreateCounter from "./CreateCounter";
 import { useQuery } from "@tanstack/react-query";
-import getCounters from "../../api/getCounters";
+import getCounters from "../api/getCounters";
 
 export default function Counters() {
   const { counters, handleCreate, handleUpdate, handleDelete } = useCounters();
