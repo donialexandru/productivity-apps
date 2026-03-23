@@ -1,28 +1,13 @@
 import { apiClient } from "../../lib/axios.ts";
+import type { AuthCredentials, AuthResponse, User } from "../types.ts";
+import { loginInputSchema } from "../../../../shared/src/index.ts";
 
-export interface AuthCredentials {
-  email: string;
-  password: string;
-}
-
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-}
-
-export interface AuthResponse {
-  token: string;
-  user: User;
-}
-
-export const loginUser = async (
-  credentials: AuthCredentials,
-): Promise<AuthResponse> => {
+export const loginUser = async (credentials): Promise<AuthResponse> => {
   const { data } = await apiClient.post<AuthResponse>(
     "/api/auth/login",
-    credentials,
+    loginInputSchema.parse(credentials),
   );
+
   return data;
 };
 
@@ -37,7 +22,7 @@ export const registerUser = async (
 };
 export const getMe = async (): Promise<User> => {
   const { data } = await apiClient.get<User>("/api/auth/me");
-  return data.user;
+  return data;
 };
 
 export const logoutUser = async (): Promise<void> => {
