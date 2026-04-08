@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import "./Header.css";
 
 export default function Header() {
   return (
-    <nav>
+    <nav className="header-nav">
       <Link to="/">
         <h1 className="logo">Productivity apps</h1>
       </Link>
