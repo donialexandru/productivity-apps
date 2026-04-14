@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import "./Header.css";
+import MindFlowLogo from "./icons/Logo";
 
 export default function Header() {
   return (
     <nav className="header-nav">
       <Link to="/">
-        <h1 className="logo">Productivity apps</h1>
+        <MindFlowLogo />
       </Link>
       <Link to="/counters">
         <h2 className="counters-nav">Counters</h2>
