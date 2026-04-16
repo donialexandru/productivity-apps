@@ -8,9 +8,5 @@ export const Route = createFileRoute("/")({
       throw redirect({ to: "/login" });
     }
   },
-  component: RouteComponent,
+  component: () => null,
 });
-
-function RouteComponent() {
-  return <div>Hello "/"!</div>;
-}
