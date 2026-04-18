@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import "./Header.css";
 import MindFlowLogo from "./icons/Logo";
+import LogoutButton from "./LogoutButton";
 
 export default function Header() {
   return (
@@ -15,6 +16,7 @@ export default function Header() {
         🔐
         <span className="nav-user-name">{"This will be the user's name"}</span>
       </div>
+      <LogoutButton />
     </nav>
   );
 }
