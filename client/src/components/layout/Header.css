@@ -1,4 +1,13 @@
 .header-nav {
   display: flex;
+  height: 120px;
   justify-content: space-between;
+  padding: 32px;
+  gap: 24px;
+}
+
+.header-nav svg {
+  display: block;
+  height: 100%;
+  width: auto;
 }

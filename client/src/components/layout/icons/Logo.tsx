@@ -1,8 +1,6 @@
-import React from "react";
-
 const MindFlowLogo = ({
-  width = 440,
-  height = 130,
+  width = 400,
+  height = "auto",
   className = "",
   style = {},
 }) => {
@@ -14,6 +12,7 @@ const MindFlowLogo = ({
       height={height}
       className={className}
       style={style}
+      preserveAspectRatio="xMidYMid meet"
       aria-label="MindFlow - Productivity Apps"
       role="img"
     >
