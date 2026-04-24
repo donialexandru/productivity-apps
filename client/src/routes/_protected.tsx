@@ -1,6 +1,5 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import Header from "../components/layout/Header";
-import { useLogout } from "../auth/hooks/useAuth";
 
 export const Route = createFileRoute("/_protected")({
   beforeLoad: ({ context }) => {
