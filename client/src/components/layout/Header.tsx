@@ -4,12 +4,14 @@ import MindFlowLogo from "./icons/Logo";
 
 export default function Header() {
   return (
-    <nav className="header-nav">
+    <div className="header-wrapper">
       <Link to="/">
         <MindFlowLogo />
       </Link>
-      <Link to="/counters">Counters</Link>
-      <Link to="/profile">Profile</Link>
-    </nav>
+      <nav className="header-nav">
+        <Link to="/counters">Counters</Link>
+        <Link to="/profile">Profile</Link>
+      </nav>
+    </div>
   );
 }
